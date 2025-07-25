@@ -24,7 +24,7 @@ const Weather = () => {
                 {/* ეს იმიტომ დავაკომენტარე რომ მაგ აიპია მისამართზე აღარ მქონდა წვდომა */}
                 {/* <h1>your current city: {weather.city}</h1> */}
                 <h2>
-                    Temperature: {fetchedWeather?.current?.temperature_2m ? `${fetchedWeather.current.temperature_2m}°C` : "No data"}
+                    Current temperature in your city: {fetchedWeather?.current?.temperature_2m ? `${fetchedWeather.current.temperature_2m}°C` : "No data"}
                 </h2>
             </div>
         </>
