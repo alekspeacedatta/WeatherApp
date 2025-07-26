@@ -44,7 +44,11 @@ body{
       background-color: white;
       transition: transform .2s;
       i{
+        transition: transform .2s;
         font-size: 24px;
+      }
+      i:hover{
+        padding-bottom: 2px;
       }
       input{
         border: none; 
