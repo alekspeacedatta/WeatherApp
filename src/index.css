@@ -66,6 +66,7 @@ body{
       outline: none;
       cursor: pointer;
       padding-right: 8px;
+      background-color: white;
       transition: transform .2s;
       i{
         margin-right: 10px;
