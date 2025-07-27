@@ -9,7 +9,7 @@ const Weather = () => {
     const handleSubmit = (e: any) => {
         e.preventDefault();
         setSubmitedCity(city);
-        if(city.trim() !== '') fetchWeather(city)
+        if(city.trim() !== '') fetchWeather(city.toLocaleLowerCase())
     }
     return (
         <>
@@ -31,10 +31,12 @@ const Weather = () => {
                 
                 {isPending && <p>Loading...</p>}
                 {isError && <p>Error: {error.message}</p>}
-                {weatherInfo?.main?.temp && (
-                <h2>Current temperature in {submitedCity}: {weatherInfo.main.temp}°C</h2>
+                {weatherInfo?.main?.temp && ( 
+                    <div className="weather-info">
+                        <h2>Current temperature in {submitedCity}: {weatherInfo.main.temp}°C</h2>  
+                        <h2>Weather: {weatherInfo.weather[0].main} - {weatherInfo.weather[0].description}</h2>
+                    </div>
                 )}
-                
             </div>                
         </>
     )
