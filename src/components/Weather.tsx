@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useWeatherResponse } from "../customHooks/useWeatherResponse"
 import { useCurrentWeather } from "../customHooks/useCurrentWeather";
+import WeatherCard from "./WeatherCard";
 const Weather = () => {
 
     const [ city, setCity ] = useState('');    
@@ -39,20 +40,16 @@ const Weather = () => {
                 {isPending && <p>Loading...</p>}
                 {isError && <p>Error: {error.message}</p>}
                 {weatherInfo?.main?.temp && ( 
-                    <div className="weather-info">
-                        <section>
-                            <h2>Current temperature in {submitedCity}: {weatherInfo.main.temp}°C</h2>  
-                            <h2>Weather: {weatherInfo.weather[0].main} - {weatherInfo.weather[0].description}</h2>
-                        </section>
-                    </div>
+                    <WeatherCard
+                        title={`Current Temprature In ${submitedCity}`}
+                        weatherInfo={weatherInfo}
+                    />
                 )}
                 {currentWeather?.main?.temp && (
-                    <div className="weather-info">
-                        <section>
-                            <h2> temperature in your current Location: {currentWeather?.main?.temp} °C</h2>
-                            <h2>Weather: {currentWeather.weather[0].main} - {currentWeather.weather[0].description}</h2>
-                        </section>
-                    </div>
+                    <WeatherCard 
+                        title={"Temprature in your current Location"}
+                        weatherInfo={currentWeather}
+                    />
                 )}
             </div>                
         </>

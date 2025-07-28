@@ -113,7 +113,7 @@ body{
       }
     }
     section:hover{
-      transform: translateY(-1px);
+      transform: translateY(-2px);
 
     }
   }
