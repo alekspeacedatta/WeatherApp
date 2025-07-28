@@ -1,22 +1,18 @@
-import { useEffect, useState } from "react"
 import { useWeatherResponse } from "../customHooks/useWeatherResponse"
 import { useCurrentWeather } from "../customHooks/useCurrentWeather";
+import { useState } from "react"
 import WeatherCard from "./WeatherCard";
 const Weather = () => {
 
     const [ city, setCity ] = useState('');    
-    const [ submitedCity, setSubmitedCity ] = useState('');
+    const [ submittedCity, setSubmittedCity ] = useState('');
     const { mutate: fetchWeather, isPending, isError, error, data: weatherInfo } = useWeatherResponse();
 
-    const { mutate: fetchCurrentWeather, data: currentWeather } = useCurrentWeather();
-
-    useEffect(() => {
-        fetchCurrentWeather();
-    }, [])
+    const { data: currentWeather } = useCurrentWeather();
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
-        setSubmitedCity(city);
+        setSubmittedCity(city);
         if(city.trim() !== '') fetchWeather(city.toLocaleLowerCase())
     }
     return (
@@ -38,10 +34,10 @@ const Weather = () => {
                 </form>
                 
                 {isPending && <p>Loading...</p>}
-                {isError && <p>Error: {error.message}</p>}
+                {isError && <p>Error: {(error as Error).message}</p>}
                 {weatherInfo?.main?.temp && ( 
                     <WeatherCard
-                        title={`Current Temprature In ${submitedCity}`}
+                        title={`Current Temprature In ${submittedCity}`}
                         weatherInfo={weatherInfo}
                     />
                 )}
