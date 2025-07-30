@@ -13,7 +13,7 @@ const Weather = () => {
     const handleSubmit = (e: any) => {
         e.preventDefault();
         setSubmittedCity(city);
-        if(city.trim() !== '') fetchWeather(city.toLocaleLowerCase())
+        if(city.trim() !== '') fetchWeather(city.toLocaleLowerCase());
     }
     return (
         <>

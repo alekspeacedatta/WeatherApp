@@ -7,7 +7,7 @@ export const useWeatherResponse = () => {
     return useMutation({
         mutationFn: weatherResponse,
         onSuccess: (data, city) => {
-            queryClient.setQueryData(['weather', city], data);
+            queryClient.setQueryData(['weather', city], data);;
         }
     })
 }

@@ -12,7 +12,6 @@ export const weatherResponse = async ( cityName: string) => {
         console.error(error);
     }
 }
-
 export const fetchCurrentWeatehr = async () => {
     const { latitude , longitude } : { latitude: number; longitude: number } = await getCurrentLocation();
     const res = await fetch(`https://${BASE_URL}/weather?lat=${latitude}&lon=${longitude}&APPID=${API_KEY}&units=metric`);
